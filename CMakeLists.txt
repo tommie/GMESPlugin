@@ -67,5 +67,8 @@ set_target_properties(gmesplugin PROPERTIES
 	COMPILE_FLAGS "-O3 -Wall"
 	LINK_FLAGS "-Wl,--no-undefined")
 
+set_source_files_properties(${GME_SOURCES} PROPERTIES
+	COMPILE_FLAGS "-w")
+
 set_source_files_properties(${PLUGIN_SOURCES} PROPERTIES
 	COMPILE_FLAGS "-std=gnu99")
