@@ -5,20 +5,20 @@ struct GMEParserContext {
 	int trackno;
 	int track_count;
 	track_info_t gmetrack;
-	char *filename;
+	char *uri;
 };
 
-void *GMEParserOpen(struct SpotifyLFPluginDescription *plugin, const char *path, int song_index);
-void GMEParserClose(struct SpotifyLFPluginDescription *plugin, void *ctx);
+void *GMEParserOpen(struct sppb_plugin_description *plugin, struct sppb_byte_input *input, int song_index);
+void GMEParserClose(struct sppb_plugin_description *plugin, void *ctx);
 
-unsigned int GMEParserSongCount(struct SpotifyLFPluginDescription *plugin, void *ctx);
-enum SPChannelFormat GMEParserGetChannelFormat(struct SpotifyLFPluginDescription *plugin, void *ctx);
-unsigned int GMEParserSampleRate(struct SpotifyLFPluginDescription *plugin, void *ctx);
-unsigned int GMEParserLengthInSamples(struct SpotifyLFPluginDescription *plugin, void *ctx);
+unsigned int GMEParserSongCount(struct sppb_plugin_description *plugin, void *ctx);
+enum sppb_channel_format GMEParserGetChannelFormat(struct sppb_plugin_description *plugin, void *ctx);
+unsigned int GMEParserSampleRate(struct sppb_plugin_description *plugin, void *ctx);
+unsigned int GMEParserLengthInSamples(struct sppb_plugin_description *plugin, void *ctx);
 
-spbool GMEParserHasField(struct SpotifyLFPluginDescription *plugin, void *ctx, enum SPFieldType frame);
-spbool GMEParserReadField(struct SpotifyLFPluginDescription *plugin, void *ctx, enum SPFieldType frame, char *dest, size_t *length);
+spbool GMEParserHasField(struct sppb_plugin_description *plugin, void *ctx, enum sppb_field_type frame);
+spbool GMEParserReadField(struct sppb_plugin_description *plugin, void *ctx, enum sppb_field_type frame, char *dest, size_t *length);
 
-void GMEParserInitialize(struct SpotifyLFParserPlugin *plugin);
+void GMEParserInitialize(struct sppb_parser_plugin *plugin);
 
 unsigned lengthInSamplesOfTrack(const track_info_t *track);
